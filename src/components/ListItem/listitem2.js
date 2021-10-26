@@ -51,39 +51,50 @@ import LanguageIcon from '@mui/icons-material/Language';
 import HttpIcon from '@mui/icons-material/Http';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
-const data=[
- {text : 'Editor', ICON :  <ListAltIcon />},
- {text : 'Settings', ICON :  <SettingsIcon />},
- {text : 'New', ICON :  <OpenInNewIcon/>},
- {text : 'Open', ICON :  <FolderOpenIcon />},
- {text : 'Examples', ICON :  <LibraryBooksIcon />},
- {text : 'Save XML', ICON :  <SaveIcon />},
- {text : 'Screenshot', ICON :  <ScreenshotIcon/>},
- {text : 'Undo', ICON :  <UndoIcon  />},
- {text : 'Redo', ICON :  <RedoIcon />},
- {text : 'Language', ICON :  <LanguageIcon />},
- {text : 'WebUSB', ICON :  <HttpIcon/>},
- {text : 'Upload', ICON :  <CloudUploadIcon />},
-];
+class MainListItems2 extends React.Component
+{
 
-export const mainListItems = (
-  <div>
-   {data.map((item)=>{
-     return (
-      <Tooltip title={item.text} placement="right">
-      <ListItem button style={{backgroundColor : 'rgb(5, 30, 52)'}}>
-        <ListItemIcon style={{color : 'rgba(255,255,255,.8)'}}>
-         {item.ICON}
-        </ListItemIcon>
-        <ListItemText primary={item.text} style={{color : 'rgba(255,255,255,.8)'}}/>
-        </ListItem>
-  </Tooltip>
-     );
-   })}
-  </div>
-);
+  render()
+  {
+    const data=[
+      {text : 'Editor', ICON :  <ListAltIcon />, function : this.props.setEditorStatus},
+      {text : 'Settings', ICON :  <SettingsIcon />,function : this.props.setSettingsStatus},
+      {text : 'New', ICON :  <OpenInNewIcon/>,function : null},
+      {text : 'Open', ICON :  <FolderOpenIcon />,function : null},
+      {text : 'Examples', ICON :  <LibraryBooksIcon />,function : null},
+      {text : 'Save XML', ICON :  <SaveIcon />,function : null},
+      {text : 'Screenshot', ICON :  <ScreenshotIcon/>,function : null},
+      {text : 'Undo', ICON :  <UndoIcon  />,function : null},
+      {text : 'Redo', ICON :  <RedoIcon />,function : null},
+      {text : 'Language', ICON :  <LanguageIcon />,function : null},
+      {text : 'WebUSB', ICON :  <HttpIcon/>,function : null},
+      {text : 'Upload', ICON :  <CloudUploadIcon />,function : null},
+     ];
 
-export const secondaryListItems = (
-  <div>
-  </div>
-);
+    const mainListItems = (
+      <div>
+       {data.map((item)=>{
+         return (
+          <Tooltip title={item.text} placement="right">
+          <ListItem button style={{backgroundColor : 'rgb(5, 30, 52)'}} onClick={item.function}>
+            <ListItemIcon style={{color : 'rgba(255,255,255,.8)'}}>
+             {item.ICON}
+            </ListItemIcon>
+            <ListItemText primary={item.text} style={{color : 'rgba(255,255,255,.8)'}}/>
+            </ListItem>
+      </Tooltip>
+         );
+       })}
+      </div>
+    );
+
+    return (
+      <div>
+           {mainListItems}
+      </div>
+    );
+  }
+}
+
+
+export default MainListItems2;

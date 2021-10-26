@@ -37,7 +37,7 @@ import Stack from '@mui/material/Stack';
 import PropTypes from 'prop-types';
 import LanguageIcon from '@mui/icons-material/Language';
 import EmailIcon from '@mui/icons-material/Email';
-import { mainListItems as mainListItems2, secondaryListItems as  secondaryListItems2} from '../ListItem/listitem2';
+import MainListItems2 from '../ListItem/listitem2';
 import PreviewUI from '../Preview/preview';
 import Backdrop from '@mui/material/Backdrop';
 import SpeedDial from '@mui/material/SpeedDial';
@@ -52,6 +52,8 @@ import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Editor from '../Editor/editor'
+import SettingsUI from '../Settings/settings';
 
 const actions = [
   { icon: <DeleteIcon />, name: 'Delete' },
@@ -136,6 +138,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
+  const [editorStatus,setEditorStatus]=React.useState(false);
+  const [settingsStatus,setSettingsStatus]=React.useState(false);
   const [openSD, setOpenSD] = React.useState(false);
   const handleOpenSD = () => setOpenSD(true);
   const handleCloseSD = () => setOpenSD(false);
@@ -188,6 +192,8 @@ function DashboardContent() {
 
   return (
     <Box>
+      {editorStatus ? <Editor setEditorStatus={setEditorStatus}/> : null}
+      {settingsStatus ? <SettingsUI setSettingsStatus={setSettingsStatus}/> : null}
        <Backdrop open={openSD} />
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -380,7 +386,12 @@ function DashboardContent() {
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
-        <List style={{color : 'rgba(255,255,255,.8)'}}>{mainListItems2}</List>
+        <List style={{color : 'rgba(255,255,255,.8)'}}>
+          <MainListItems2 
+          setEditorStatus={setEditorStatus}
+          setSettingsStatus={setSettingsStatus}
+          />
+          </List>
         </Drawer>
          : null }
       </Box>
