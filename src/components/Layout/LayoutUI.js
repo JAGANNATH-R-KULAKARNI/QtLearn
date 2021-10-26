@@ -37,6 +37,8 @@ import Stack from '@mui/material/Stack';
 import PropTypes from 'prop-types';
 import LanguageIcon from '@mui/icons-material/Language';
 import EmailIcon from '@mui/icons-material/Email';
+import { mainListItems as mainListItems2, secondaryListItems as  secondaryListItems2} from '../ListItem/listitem2';
+import PreviewUI from '../Preview/preview';
 
 const FireNav = styled(List)({
   '& .MuiListItemButton-root': {
@@ -180,8 +182,8 @@ function DashboardContent() {
                 ...(open && { display: 'none' }),
               }}
             >
-              <MenuIcon />
-            </IconButton>
+             { !open2 ?<MenuIcon /> : null}            
+             </IconButton>
             <Typography
               component="h1"
               variant="h6"
@@ -310,9 +312,7 @@ function DashboardContent() {
               </Grid>
               {/* Recent Orders */}
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                 Orders
-                </Paper>
+                <PreviewUI/>
               </Grid>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
@@ -333,7 +333,7 @@ function DashboardContent() {
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
-        <List style={{color : 'rgba(255,255,255,.8)'}}>{mainListItems}</List>
+        <List style={{color : 'rgba(255,255,255,.8)'}}>{mainListItems2}</List>
         </Drawer>
       </Box>
     </ThemeProvider>
