@@ -39,22 +39,31 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import BuildIcon from '@mui/icons-material/Build';
 import DeveloperModeIcon from '@mui/icons-material/DeveloperMode';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import SettingsIcon from '@mui/icons-material/Settings';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import SaveIcon from '@mui/icons-material/Save';
+import ScreenshotIcon from '@mui/icons-material/Screenshot';
+import UndoIcon from '@mui/icons-material/Undo';
+import RedoIcon from '@mui/icons-material/Redo';
+import LanguageIcon from '@mui/icons-material/Language';
+import HttpIcon from '@mui/icons-material/Http';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 const data=[
- {text : 'Editor', ICON :  <AndroidIcon />},
- {text : 'Settings', ICON :  <LoopIcon />},
- {text : 'New', ICON :  'a*b'},
- {text : 'Open', ICON :  <TranslateIcon />},
- {text : 'Examples', ICON :  <FormatListNumberedIcon />},
- {text : 'Save XML', ICON :  <LibraryBooksIcon />},
- {text : 'Screenshot', ICON :  '{1,2...}'},
- {text : 'Undo', ICON :  <CodeIcon />},
- {text : 'Redo', ICON :  <ColorLensIcon />},
- {text : 'Language', ICON :  <TrendingUpIcon />},
- {text : 'WebUSB', ICON :  '=>(){}'},
- {text : 'Upload', ICON :  <BuildIcon />},
- {text : 'Code Segment', ICON :  <DeveloperModeIcon />},
- {text : 'Time', ICON :  <AccessTimeFilledIcon />}
+ {text : 'Editor', ICON :  <ListAltIcon />},
+ {text : 'Settings', ICON :  <SettingsIcon />},
+ {text : 'New', ICON :  <OpenInNewIcon/>},
+ {text : 'Open', ICON :  <FolderOpenIcon />},
+ {text : 'Examples', ICON :  <LibraryBooksIcon />},
+ {text : 'Save XML', ICON :  <SaveIcon />},
+ {text : 'Screenshot', ICON :  <ScreenshotIcon/>},
+ {text : 'Undo', ICON :  <UndoIcon  />},
+ {text : 'Redo', ICON :  <RedoIcon />},
+ {text : 'Language', ICON :  <LanguageIcon />},
+ {text : 'WebUSB', ICON :  <HttpIcon/>},
+ {text : 'Upload', ICON :  <CloudUploadIcon />},
 ];
 
 export const mainListItems = (

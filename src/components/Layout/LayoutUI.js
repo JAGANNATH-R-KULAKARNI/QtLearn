@@ -39,6 +39,27 @@ import LanguageIcon from '@mui/icons-material/Language';
 import EmailIcon from '@mui/icons-material/Email';
 import { mainListItems as mainListItems2, secondaryListItems as  secondaryListItems2} from '../ListItem/listitem2';
 import PreviewUI from '../Preview/preview';
+import Backdrop from '@mui/material/Backdrop';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import PrintIcon from '@mui/icons-material/Print';
+import ShareIcon from '@mui/icons-material/Share';
+import SpeedDialUI from '../speedDial/speedDial';
+import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import ZoomOutIcon from '@mui/icons-material/ZoomOut';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+const actions = [
+  { icon: <DeleteIcon />, name: 'Delete' },
+  { icon: <ZoomOutIcon />, name: 'ZoomOut' },
+  { icon: <ZoomInIcon />, name: 'ZoomIn' },
+  { icon: <ZoomOutMapIcon />, name: 'Reset' },
+];
+
 
 const FireNav = styled(List)({
   '& .MuiListItemButton-root': {
@@ -115,6 +136,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
+  const [openSD, setOpenSD] = React.useState(false);
+  const handleOpenSD = () => setOpenSD(true);
+  const handleCloseSD = () => setOpenSD(false);
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -163,10 +187,12 @@ function DashboardContent() {
   );
 
   return (
+    <Box>
+       <Backdrop open={openSD} />
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open} style={{backgroundColor : 'rgb(5, 30, 52)'}}>
+       {!openSD ? <AppBar position="absolute" open={open} style={{backgroundColor : 'rgb(5, 30, 52)'}}>
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -206,6 +232,8 @@ function DashboardContent() {
             </IconButton>
           </Toolbar>
         </AppBar>
+        : null }
+       {!openSD ? 
         <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
@@ -223,6 +251,7 @@ function DashboardContent() {
           </Toolbar>
         <List style={{color : 'rgba(255,255,255,.8)'}}>{mainListItems}</List>
         </Drawer>
+        : null }
         <Box
           component="main"
           sx={{
@@ -312,12 +341,30 @@ function DashboardContent() {
               </Grid>
               {/* Recent Orders */}
               <Grid item xs={12}>
-                <PreviewUI/>
+               { !openSD ? <PreviewUI/> : null}
+                <SpeedDial
+        ariaLabel="SpeedDial tooltip example"
+        sx={{ position: 'absolute',right : 100,top : 320 }}
+        icon={<SpeedDialIcon />}
+        onClose={handleCloseSD}
+        onOpen={handleOpenSD}
+        open={openSD}
+      >
+        {actions.map((action) => (
+          <SpeedDialAction
+            key={action.name}
+            icon={action.icon}
+            tooltipTitle={action.name}
+            tooltipOpen
+          />
+        ))}
+      </SpeedDial>
               </Grid>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
+        {!openSD ?
         <Drawer variant="permanent" open={open2}>
           <Toolbar
             sx={{
@@ -335,8 +382,10 @@ function DashboardContent() {
           </Toolbar>
         <List style={{color : 'rgba(255,255,255,.8)'}}>{mainListItems2}</List>
         </Drawer>
+         : null }
       </Box>
     </ThemeProvider>
+    </Box>
   );
 }
 
