@@ -33,6 +33,10 @@ import Dns from '@mui/icons-material/Dns';
 import Public from '@mui/icons-material/Public';
 import Display from '../Display/display';
 import ClearIcon from '@mui/icons-material/Clear';
+import Stack from '@mui/material/Stack';
+import PropTypes from 'prop-types';
+import LanguageIcon from '@mui/icons-material/Language';
+import EmailIcon from '@mui/icons-material/Email';
 
 const FireNav = styled(List)({
   '& .MuiListItemButton-root': {
@@ -51,12 +55,12 @@ const FireNav = styled(List)({
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Made By - '}
-      <br />
-      Jagannath R Kulakarni{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
+    {'Made By -> '}
+    <Link color="inherit" target="_blank" href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile">
+      Jagannath R Kulakarni
+    </Link>{' '}
+    {'.'}
+  </Typography>
   );
 }
 
@@ -210,6 +214,7 @@ function DashboardContent() {
               backgroundColor : 'rgb(5, 30, 52)'
             }}
           >
+            {Heading}
             <IconButton onClick={toggleDrawer} style={{color : 'rgba(255,255,255,.8)'}}>
               <ChevronLeftIcon />
             </IconButton>
@@ -253,10 +258,54 @@ function DashboardContent() {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 240,
+                    height: 440,
+                    bgcolor: 'grey.200'
                   }}
                 >
-                  deposits
+                     <ListItem>
+          <ListItemIcon sx={{ fontSize: 40 }}>🔥</ListItemIcon>
+          <ListItemText
+            sx={{ my: 0 }}
+            primary="About"
+            primaryTypographyProps={{
+              fontSize: 20,
+              fontWeight: 'medium',
+              letterSpacing: 0,
+            }}
+          />
+        </ListItem>
+        <Typography>
+        QtPi Robotics has built an ecosystem of over 20,000 children aged between 7-17 across India, since we started in 2016. It’s about time we pull students out of the rat race and teach them how to think instead of what to think! QtPi Robotics is doing just that!.
+        </Typography>
+        <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
+        Social
+      </Typography>
+      <Link
+          display="block"
+          variant="body1"
+          href="https://qtpi.in/"
+          target="_blank"
+          sx={{ mb: 0.5 }}
+          style={{color: 'rgb(5, 30, 52)'}}
+        >
+          <Stack direction="row" spacing={1} alignItems="center">
+            <LanguageIcon />
+            <span>Website</span>
+          </Stack>
+        </Link>
+        <Link
+          display="block"
+          variant="body1"
+          href="https://qtpi.in/#contact"
+          target="_blank"
+          sx={{ mb: 0.5 }}
+          style={{color: 'rgb(5, 30, 52)'}}
+        >
+          <Stack direction="row" spacing={1} alignItems="center">
+            <EmailIcon />
+            <span>Contact</span>
+          </Stack>
+        </Link>
                 </Paper>
               </Grid>
               {/* Recent Orders */}
