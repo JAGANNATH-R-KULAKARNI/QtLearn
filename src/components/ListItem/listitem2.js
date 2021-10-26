@@ -66,8 +66,8 @@ class MainListItems2 extends React.Component
       {text : 'Screenshot', ICON :  <ScreenshotIcon/>,function : null},
       {text : 'Undo', ICON :  <UndoIcon  />,function : null},
       {text : 'Redo', ICON :  <RedoIcon />,function : null},
-      {text : 'Language', ICON :  <LanguageIcon />,function : null},
-      {text : 'WebUSB', ICON :  <HttpIcon/>,function : null},
+      {text : 'Language', ICON :  <LanguageIcon />,function : this.props.setLanStatus},
+      {text : 'Communication between the board and the computer', ICON :  <HttpIcon/>,function : null},
       {text : 'Upload', ICON :  <CloudUploadIcon />,function : null},
      ];
 

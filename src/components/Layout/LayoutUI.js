@@ -7,16 +7,13 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from '../ListItem/listitem';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -54,6 +51,9 @@ import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Editor from '../Editor/editor'
 import SettingsUI from '../Settings/settings';
+import LanguageUI from '../ListItem/dialog';
+import { useMediaQuery } from '@mui/material';
+import RatingUI from './ratings';
 
 const actions = [
   { icon: <DeleteIcon />, name: 'Delete' },
@@ -80,11 +80,13 @@ const FireNav = styled(List)({
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-    {'Made By -> '}
     <Link color="inherit" target="_blank" href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile">
       Jagannath R Kulakarni
     </Link>{' '}
     {'.'}
+    <br/>
+    <br/>
+    <RatingUI/>
   </Typography>
   );
 }
@@ -140,6 +142,7 @@ const mdTheme = createTheme();
 function DashboardContent() {
   const [editorStatus,setEditorStatus]=React.useState(false);
   const [settingsStatus,setSettingsStatus]=React.useState(false);
+  const [lanStatus, setLanStatus] = React.useState(false);
   const [openSD, setOpenSD] = React.useState(false);
   const handleOpenSD = () => setOpenSD(true);
   const handleCloseSD = () => setOpenSD(false);
@@ -153,7 +156,7 @@ function DashboardContent() {
   const toggleDrawer2=()=>{
     setOpen2(!open2);
   };
-
+  const matches = useMediaQuery('(min-width:414px)');
   const Heading=(
     <ThemeProvider
     theme={createTheme({
@@ -194,6 +197,7 @@ function DashboardContent() {
     <Box>
       {editorStatus ? <Editor setEditorStatus={setEditorStatus}/> : null}
       {settingsStatus ? <SettingsUI setSettingsStatus={setSettingsStatus}/> : null}
+      {lanStatus ? <LanguageUI setLanStatus={setLanStatus}/> : null}
        <Backdrop open={openSD} />
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -295,7 +299,7 @@ function DashboardContent() {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 440,
+                    height: matches ? 440 : 500,
                     bgcolor: 'grey.200'
                   }}
                 >
@@ -390,6 +394,7 @@ function DashboardContent() {
           <MainListItems2 
           setEditorStatus={setEditorStatus}
           setSettingsStatus={setSettingsStatus}
+          setLanStatus={setLanStatus}
           />
           </List>
         </Drawer>
