@@ -32,6 +32,7 @@ import PermMedia from '@mui/icons-material/PermMedia';
 import Dns from '@mui/icons-material/Dns';
 import Public from '@mui/icons-material/Public';
 import Display from '../Display/display';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const FireNav = styled(List)({
   '& .MuiListItemButton-root': {
@@ -113,6 +114,12 @@ function DashboardContent() {
     setOpen(!open);
   };
 
+  const [open2,setOpen2]=React.useState(false);
+
+  const toggleDrawer2=()=>{
+    setOpen2(!open2);
+  };
+
   const Heading=(
     <ThemeProvider
     theme={createTheme({
@@ -180,10 +187,16 @@ function DashboardContent() {
             >
                 {!open ? Heading : null}
             </Typography>
-            <IconButton color="inherit">
-              {/* <Badge badgeContent={4} color="secondary">
-               <NotificationsIcon />
-              </Badge>*/}
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={toggleDrawer2}
+              sx={{
+                ...(open && { display: 'none' }),
+              }}
+            >
+            {!open2 ?  <MenuIcon /> : <ClearIcon />}
             </IconButton>
           </Toolbar>
         </AppBar>
@@ -197,7 +210,6 @@ function DashboardContent() {
               backgroundColor : 'rgb(5, 30, 52)'
             }}
           >
-            {Heading}
             <IconButton onClick={toggleDrawer} style={{color : 'rgba(255,255,255,.8)'}}>
               <ChevronLeftIcon />
             </IconButton>
@@ -257,6 +269,23 @@ function DashboardContent() {
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
+        <Drawer variant="permanent" open={open2}>
+          <Toolbar
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              px: [1],
+              backgroundColor : 'rgb(5, 30, 52)'
+            }}
+          >
+            {Heading}
+            <IconButton onClick={toggleDrawer2} style={{color : 'rgba(255,255,255,.8)'}}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </Toolbar>
+        <List style={{color : 'rgba(255,255,255,.8)'}}>{mainListItems}</List>
+        </Drawer>
       </Box>
     </ThemeProvider>
   );

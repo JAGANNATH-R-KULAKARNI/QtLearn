@@ -16,7 +16,7 @@ const images = [
   {
     label: 'San Francisco – Oakland Bay Bridge, United States',
     imgPath:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp9DDks3a0R9HRcZFUjoRltSUNzGDy8Tu6MQ&usqp=CAU',
+      'https://cdnb.artstation.com/p/assets/images/images/034/832/319/large/rohith-siddarth-qtlearn-dark.jpg?1613373847',
   },
   {
     label: 'Bird',
@@ -31,7 +31,7 @@ const images = [
   {
     label: 'Goč, Serbia',
     imgPath:
-      'https://wallpapercave.com/wp/wp7451972.png',
+      'https://wallpaperaccess.com/full/816996.jpg',
   },
 ];
 
@@ -54,7 +54,7 @@ function SwipeableTextMobileStepper() {
 
   return (
     <Box sx={{ maxWidth: 800, flexGrow: 1 }}>
-      <Paper
+      {/* <Paper
         square
         elevation={0}
         sx={{
@@ -65,8 +65,9 @@ function SwipeableTextMobileStepper() {
           bgcolor: 'background.default',
         }}
       >
-        <Typography>{images[activeStep].label}</Typography>
+       <Typography>{images[activeStep].label}</Typography>
       </Paper>
+      */}
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -92,7 +93,7 @@ function SwipeableTextMobileStepper() {
           </div>
         ))}
       </AutoPlaySwipeableViews>
-      <MobileStepper
+      {/*<MobileStepper
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
@@ -121,6 +122,7 @@ function SwipeableTextMobileStepper() {
           </Button>
         }
       />
+    */}
     </Box>
   );
 }
