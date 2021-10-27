@@ -23,12 +23,13 @@ export default function FullScreenDialog(props) {
   return (
     <div>
       <Dialog
+        data-test='jagEditorDialog'
         fullScreen
         open={open}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: 'relative',backgroundColor : 'rgb(5, 30, 52)' }}>
+        <AppBar sx={{ position: 'relative',backgroundColor : 'rgb(5, 30, 52)' }} data-test='jagEditorAppbar'>
           <Toolbar>
             <IconButton
               edge="start"
@@ -45,7 +46,7 @@ export default function FullScreenDialog(props) {
         </AppBar>
         <br/>
         <br/>
-        <EditorUI/>
+        <EditorUI />
       </Dialog>
     </div>
   );

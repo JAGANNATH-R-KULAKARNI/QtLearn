@@ -14,24 +14,14 @@ import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { mainListItems, secondaryListItems } from '../ListItem/listitem';
+import { mainListItems } from '../ListItem/listitem';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Tooltip from '@mui/material/Tooltip';
-import ArrowRight from '@mui/icons-material/ArrowRight';
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
-import Home from '@mui/icons-material/Home';
-import Settings from '@mui/icons-material/Settings';
-import People from '@mui/icons-material/People';
-import PermMedia from '@mui/icons-material/PermMedia';
-import Dns from '@mui/icons-material/Dns';
-import Public from '@mui/icons-material/Public';
 import Display from '../Display/display';
 import ClearIcon from '@mui/icons-material/Clear';
 import Stack from '@mui/material/Stack';
-import PropTypes from 'prop-types';
 import LanguageIcon from '@mui/icons-material/Language';
 import EmailIcon from '@mui/icons-material/Email';
 import MainListItems2 from '../ListItem/listitem2';
@@ -40,11 +30,6 @@ import Backdrop from '@mui/material/Backdrop';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
-import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import PrintIcon from '@mui/icons-material/Print';
-import ShareIcon from '@mui/icons-material/Share';
-import SpeedDialUI from '../speedDial/speedDial';
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
@@ -194,18 +179,19 @@ function DashboardContent() {
   );
 
   return (
+    <div  data-test="jagLayoutBox">
     <Box>
       {editorStatus ? <Editor setEditorStatus={setEditorStatus}/> : null}
       {settingsStatus ? <SettingsUI setSettingsStatus={setSettingsStatus}/> : null}
       {lanStatus ? <LanguageUI setLanStatus={setLanStatus}/> : null}
        <Backdrop open={openSD} />
-    <ThemeProvider theme={mdTheme}>
+    <ThemeProvider theme={mdTheme} data-test="jagLayoutTP">
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
        {!openSD ? <AppBar position="absolute" open={open} style={{backgroundColor : 'rgb(5, 30, 52)'}}>
           <Toolbar
             sx={{
-              pr: '24px', // keep right padding when drawer closed
+              pr: '24px',
             }}
           >
             <IconButton
@@ -255,11 +241,11 @@ function DashboardContent() {
             }}
           >
             {Heading}
-            <IconButton onClick={toggleDrawer} style={{color : 'rgba(255,255,255,.8)'}}>
+            <IconButton onClick={toggleDrawer} style={{color : 'rgba(255,255,255,.8)'}} data-test="jagLayoutIB">
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
-        <List style={{color : 'rgba(255,255,255,.8)'}}>{mainListItems}</List>
+        <List style={{color : 'rgba(255,255,255,.8)'}} data-test="jagLayoutList">{mainListItems}</List>
         </Drawer>
         : null }
         <Box
@@ -280,19 +266,8 @@ function DashboardContent() {
             <Grid container spacing={3}>
               
               <Grid item xs={12} md={8} lg={9}>
-                {/*<Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  chart
-                </Paper>*/}
                   <Display/>
               </Grid>
-              {/* Recent Deposits */}
               <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
@@ -375,7 +350,7 @@ function DashboardContent() {
           </Container>
         </Box>
         {!openSD ?
-        <Drawer variant="permanent" open={open2}>
+        <Drawer variant="permanent" open={open2} data-test="jagLayoutDrawer">
           <Toolbar
             sx={{
               display: 'flex',
@@ -402,6 +377,7 @@ function DashboardContent() {
       </Box>
     </ThemeProvider>
     </Box>
+    </div>
   );
 }
 

@@ -37,10 +37,6 @@ const Levels = [
 export default function DraggableDialog(props) {
   const [open, setOpen] = React.useState(true);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
     props.setSettingsStatus(false);
