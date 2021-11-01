@@ -40,7 +40,7 @@ class MainListItems2 extends React.Component
       <div>
        {data.map((item)=>{
          return (
-          <Tooltip title={item.text} placement="right">
+          <Tooltip title={item.text} placement="right" key={item.text}>
           <ListItem button style={{backgroundColor : 'rgb(5, 30, 52)'}} onClick={item.function}>
             <ListItemIcon style={{color : 'rgba(255,255,255,.8)'}}>
              {item.ICON}

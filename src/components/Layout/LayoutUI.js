@@ -39,6 +39,7 @@ import SettingsUI from '../Settings/settings';
 import LanguageUI from '../ListItem/dialog';
 import { useMediaQuery } from '@mui/material';
 import RatingUI from './ratings';
+import Logo from '../../images/qtpi.png';
 
 const actions = [
   { icon: <DeleteIcon />, name: 'Delete' },
@@ -162,10 +163,10 @@ function DashboardContent() {
     <Paper elevation={0} sx={{ maxWidth: 256 }}>
       <FireNav component="nav" disablePadding>
         <ListItemButton component="a" href="#customized-list">
-          <ListItemIcon sx={{ fontSize: 20 }}>🔥</ListItemIcon>
+          <ListItemIcon sx={{ fontSize: 20 }}><img src={Logo} style={{height : 50,width : 80}} alt="logo"/></ListItemIcon>
           <ListItemText
             sx={{ my: 0 }}
-            primary="QtLearn"
+            primary=""
             primaryTypographyProps={{
               fontSize: 20,
               fontWeight: 'medium',

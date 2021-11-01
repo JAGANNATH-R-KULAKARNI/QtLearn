@@ -33,10 +33,10 @@ const data=[
 ];
 
 export const mainListItems = (
-  <div>
+  <div id="mainListItems1">
    {data.map((item)=>{
      return (
-      <Tooltip title={item.text} placement="right">
+      <Tooltip title={item.text} placement="right" key={item.text}>
       <ListItem button style={{backgroundColor : 'rgb(5, 30, 52)'}}>
         <ListItemIcon style={{color : 'rgba(255,255,255,.8)'}}>
          {item.ICON}
